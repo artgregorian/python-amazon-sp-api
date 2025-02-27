@@ -1,6 +1,6 @@
 import urllib.parse
 
-from sp_api.base import Client, sp_endpoint, fill_query_params, ApiResponse
+from sp_api.base import ApiResponse, Client, fill_query_params, sp_endpoint
 
 
 class VendorShipments(Client):
@@ -37,7 +37,7 @@ class VendorShipments(Client):
                     ApiResponse:
         """
 
-        return self._request(kwargs.pop("path"), data=kwargs)
+        return self._request(kwargs.pop("path"), data=kwargs, add_marketplace=False)
 
     @sp_endpoint("/vendor/shipping/v1/shipments", method="POST")
     def submit_shipments(self, **kwargs) -> ApiResponse:
